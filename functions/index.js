@@ -11,12 +11,14 @@ exports.detectEvilUsers = functions.firestore
 
         const filter = new Filter();
         const { text, uid } = doc.data(); 
+        const addtionalBadWords = ['dm', 'cc', 'dit', 'lon', 'may', 'tao']
 
+        filter.addWords(...addtionalBadWords);
 
         if (filter.isProfane(text)) {
 
             const cleaned = filter.clean(text);
-            await doc.ref.update({text: `🤐 I got BANNED for life for saying... ${cleaned}`});
+            await doc.ref.update({text: `🤐 BAN vì nói từ... ${cleaned}`});
 
             await db.collection('banned').doc(uid).set({});
         } 

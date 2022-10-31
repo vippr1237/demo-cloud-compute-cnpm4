@@ -10,7 +10,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp({
-  // your config
+  apiKey: "AIzaSyC0s7vuNVa_qvz1xrs9gynpQRIF6hgsUN4",
+  authDomain: "fir-cloud-computing-cnpm4.firebaseapp.com",
+  databaseURL: "https://fir-cloud-computing-cnpm4-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "fir-cloud-computing-cnpm4",
+  storageBucket: "fir-cloud-computing-cnpm4.appspot.com",
+  messagingSenderId: "870668749594",
+  appId: "1:870668749594:web:90ee60106ce1d6f350baa3"
 })
 
 const auth = firebase.auth();
@@ -25,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>⚛️🔥💬</h1>
+        <h1>💬 Live Chat for Demo Cloud Computing D14CNPM4 </h1>
         <SignOut />
       </header>
 
@@ -46,8 +52,8 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>Do not violate the community guidelines or you will be banned for life!</p>
+      <button className="sign-in" onClick={signInWithGoogle}><img width="20px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />Đăng nhập bằng Google</button>
+      <p>Vui lòng không sử dụng từ ngữ thiếu văn minh nếu không sẽ bị ban</p>
     </>
   )
 
@@ -55,7 +61,7 @@ function SignIn() {
 
 function SignOut() {
   return auth.currentUser && (
-    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+    <button className="sign-out" onClick={() => auth.signOut()}>Đăng xuất</button>
   )
 }
 
@@ -97,9 +103,9 @@ function ChatRoom() {
 
     <form onSubmit={sendMessage}>
 
-      <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
+      <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Hãy nói gì đó" />
 
-      <button type="submit" disabled={!formValue}>🕊️</button>
+      <button type="submit" disabled={!formValue}>Gửi</button>
 
     </form>
   </>)
